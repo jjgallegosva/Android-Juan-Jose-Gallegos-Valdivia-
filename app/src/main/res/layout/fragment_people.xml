@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.inicio.PeopleFragment">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListaPeople"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+
+        tools:listitem="@layout/item_people"
+        android:layout_below="@+id/parteToolbar" />
+
+    <View
+        android:id="@+id/parteToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="100dp"
+        android:text="People of Star Wars"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="40dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:visibility="gone"
+        app:layout_anchor="@+id/rvListaPeople"
+        app:layout_anchorGravity="center">
+
+        <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+            android:id="@+id/carga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="130dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:loader_animDur="180"
+            app:loader_bigCircleRadius="11dp"
+            app:loader_circleRadius="4dp"
+            app:loader_defaultColor="@color/colorplomoclaro"
+            app:loader_firstShadowColor="@color/white"
+            app:loader_secondShadowColor="@color/colorNegro"
+            app:loader_selectedColor="@color/colorNegro"
+            app:loader_showRunningShadow="false" />
+
+        <TextView
+            android:id="@+id/textViewrueda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="130dp"
+            android:gravity="center"
+            android:text="Loading"
+            android:textColor="@color/colorplomoclaro"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/carga"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

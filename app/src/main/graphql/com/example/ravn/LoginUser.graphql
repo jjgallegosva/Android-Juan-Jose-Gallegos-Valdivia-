@@ -1,0 +1,25 @@
+query Restaurante ($length: Int , $after: String){
+    allPeople(first:$length, after:$after){
+        pageInfo{
+            endCursor
+            hasNextPage
+        }
+        edges{
+            node{
+                id
+                name
+                species{
+                    name
+                }
+                homeworld{
+                    name
+                }
+                eyeColor
+                hairColor
+                skinColor
+                birthYear
+
+            }
+        }
+    }
+}
