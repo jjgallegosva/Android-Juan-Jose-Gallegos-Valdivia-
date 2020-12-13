@@ -68,6 +68,7 @@ class PeopleFragment : Fragment(), PeopleStarWarsAdapter.Actions {
 
 
         val list2=ArrayList<EntidadPasajero>()
+
         ApolloConnector.myApolloClient.query(
                 RestauranteQuery.builder()
                         .build()
@@ -83,7 +84,18 @@ class PeopleFragment : Fragment(), PeopleStarWarsAdapter.Actions {
                     if (item is RestauranteQuery.Node) { //item is automatically cast to user
                         Log.e("FDsf", "ingreso al for e if")
                         val resultado = if (item.species()?.name() == null) "Human" else item.species()?.name().toString()
-                        val entidad = EntidadPasajero(1, item.name().toString(), resultado + " From " + item.homeworld()!!.name())
+                        val listaInformacion=ArrayList<String>()
+                        val listaVehicle = ArrayList<String>()
+
+                        listaInformacion.add(item.eyeColor().toString())
+                        listaInformacion.add(item.hairColor().toString())
+                        listaInformacion.add(item.skinColor().toString())
+                        listaInformacion.add(item.birthYear().toString())
+                        for(i in 0 until item!!.vehicleConnection()!!.vehicles()!!.size){
+                            listaVehicle.add(""+item.vehicleConnection()!!.vehicles()!!.get(i).name())
+                        }
+                        val entidad = EntidadPasajero(listaInformacion,listaVehicle, item.name().toString(), resultado + " From " + item.homeworld()!!.name())
+
                         list2.add(entidad)
                         //listUsers.add(User(item.name().toString(), item.avatarUrl(), item.location().toString(), item.login().toString()))
                         Log.e("FDsf", item.name().toString())

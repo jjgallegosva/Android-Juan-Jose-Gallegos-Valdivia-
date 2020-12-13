@@ -18,8 +18,15 @@ query Restaurante ($length: Int , $after: String){
                 hairColor
                 skinColor
                 birthYear
+                vehicleConnection{
+                    vehicles{
+                        name
+                    }
+                }
 
             }
+
         }
+
     }
 }
