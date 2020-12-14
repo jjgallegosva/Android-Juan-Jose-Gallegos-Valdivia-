@@ -20,7 +20,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:text="LUke Skywalker"
-        android:textColor="@color/colorNegro"
+        android:textColor="@color/colordark"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

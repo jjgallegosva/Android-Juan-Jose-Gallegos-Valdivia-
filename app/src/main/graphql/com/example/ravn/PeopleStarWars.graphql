@@ -27,6 +27,6 @@ query Starwars ($length: Int , $after: String){
             }
 
         }
-
+        totalCount
     }
 }

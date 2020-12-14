@@ -27,6 +27,8 @@ import java.util.ArrayList
 class PeopleFragment : Fragment(), PeopleStarWarsAdapter.Actions {
     private var afterCursor:String? = null
     lateinit var adapter: PeopleStarWarsAdapter
+     private var pagina=1
+    private var TotalPagina=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,26 +43,34 @@ class PeopleFragment : Fragment(), PeopleStarWarsAdapter.Actions {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enableSpinner()
-        getUsers(view)
+
+        getUsers(view,pagina)
         //adapter = PeopleStarWarsAdapter(context!!, this)
     }
 
     override fun onClickItem(entidad: PeopleStarWars) {
         findNavController().navigate(R.id.nav_informacionFragment, bundleOf("entidad" to entidad))
     }
-    fun getUsers(view:View){
+    fun getUsers(view:View, paginaEntrada:Int){
         adapter = PeopleStarWarsAdapter(requireContext(), this)
 
 
         val list2=ArrayList<PeopleStarWars>()
 
         ApolloConnector.myApolloClient.query(
-                StarwarsQuery.builder()
+                StarwarsQuery.builder().length(paginaEntrada*5)
                         .build()
         ).enqueue(object : ApolloCall.Callback<StarwarsQuery.Data>() {
             override fun onResponse(dataResponse: Response<StarwarsQuery.Data>) {
                 //listUsers.clear() //clear list
                 val users = dataResponse.data()?.allPeople()!!.edges()
+                TotalPagina=dataResponse.data()!!.allPeople()!!.totalCount()!!
+                if(TotalPagina%5==0){
+                    TotalPagina=TotalPagina/5
+                }
+                else{
+                    TotalPagina=(TotalPagina/5)+1
+                }
                 afterCursor = dataResponse.data()?.allPeople()!!.pageInfo().endCursor().toString()
                 Log.e("FDsf", "no ingreso")
                 users!!.forEach {
@@ -91,7 +101,20 @@ class PeopleFragment : Fragment(), PeopleStarWarsAdapter.Actions {
                     recyclerPendientes.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
                     adapter.setSolicitud(list2)
                     adapter.notifyDataSetChanged()
+                    rvListaPeople.visibility=View.VISIBLE
                     disableSpinner()
+                }
+                activity?.runOnUiThread {
+                    pagina = pagina+1
+                    Thread.sleep(4*1000);
+                    enableSpinner()
+                    if(pagina<TotalPagina){
+                        getUsers(view,pagina)
+                    }
+                    else{
+                        disableSpinner()
+                    }
+
                 }
             }
 
@@ -104,6 +127,8 @@ class PeopleFragment : Fragment(), PeopleStarWarsAdapter.Actions {
                     disableSpinner()
                 }
             }
+
         })
+
     }
     }
