@@ -97,9 +97,12 @@ class PeopleFragment : Fragment(), PeopleStarWarsAdapter.Actions {
 
             override fun onFailure(e: ApolloException) {
                 //e.printStackTrace();
-                Log.d("TAG ERROR HTTP", e.message.toString())
-                fail.visibility=View.VISIBLE
-                rvListaPeople.visibility=View.GONE
+                activity?.runOnUiThread {
+                    Log.d("TAG ERROR HTTP", e.message.toString())
+                    fail.visibility = View.VISIBLE
+                    rvListaPeople.visibility = View.GONE
+                    disableSpinner()
+                }
             }
         })
     }
