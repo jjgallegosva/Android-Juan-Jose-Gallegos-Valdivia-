@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ravn.R
-import com.example.ravn.model.EntidadPasajero
 import com.example.ravn.model.Informacion
 
 class InformationAdapter(private val context: Context) : RecyclerView.Adapter<InformationAdapter.WordViewHolder>() {

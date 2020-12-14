@@ -18,17 +18,17 @@
     <View
         android:id="@+id/parteToolbar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginTop="22dp"
+       android:textAlignment="center"
         android:text="People of Star Wars"
         android:gravity="center"
         android:textColor="@color/white"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="40dp" />
+         />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/progress_bar"
         android:layout_width="match_parent"
@@ -80,5 +80,20 @@
             app:layout_constraintStart_toEndOf="@+id/carga"
             app:layout_constraintTop_toTopOf="parent" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/fail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="75dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="Failed to Load Data"
+        android:textColor="@color/colorrojo"
+        android:textSize="20dp"
+
+        app:layout_constraintTop_toTopOf="parent" />
 </RelativeLayout>

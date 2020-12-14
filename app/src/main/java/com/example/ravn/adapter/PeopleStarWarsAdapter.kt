@@ -4,18 +4,17 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ravn.R
-import com.example.ravn.model.EntidadPasajero
+import com.example.ravn.model.PeopleStarWars
 
 class PeopleStarWarsAdapter(private val context: Context, var contactoListener:Actions ) : RecyclerView.Adapter<PeopleStarWarsAdapter.WordViewHolder>() {
 
-    var dataList = ArrayList<EntidadPasajero>()
+    var dataList = ArrayList<PeopleStarWars>()
 
     interface Actions{
-        fun onClickItem(entidad: EntidadPasajero)
+        fun onClickItem(entidad: PeopleStarWars)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
@@ -42,7 +41,7 @@ class PeopleStarWarsAdapter(private val context: Context, var contactoListener:A
         var tvTitulo = itemView.findViewById(R.id.nombre) as TextView
         var tvContenido = itemView.findViewById(R.id.descripcion) as TextView
 
-        fun setData(solicitud: EntidadPasajero) {
+        fun setData(solicitud: PeopleStarWars) {
             //imgfoto.setImageResource(solicitud.getImgFoto())
             tvTitulo.text = solicitud.titulo
             tvContenido.text = solicitud.contenido
@@ -52,7 +51,7 @@ class PeopleStarWarsAdapter(private val context: Context, var contactoListener:A
         }
     }
 
-    internal fun setSolicitud(envios: List<EntidadPasajero>) {
+    internal fun setSolicitud(envios: List<PeopleStarWars>) {
         dataList.clear()
         dataList.addAll(envios)
         notifyDataSetChanged()

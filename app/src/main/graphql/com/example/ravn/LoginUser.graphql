@@ -1,4 +1,4 @@
-query Restaurante ($length: Int , $after: String){
+query Starwars ($length: Int , $after: String){
     allPeople(first:$length, after:$after){
         pageInfo{
             endCursor

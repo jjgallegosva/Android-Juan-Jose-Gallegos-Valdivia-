@@ -7,7 +7,7 @@ import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import com.apollographql.apollo.ApolloClient
 import com.example.ravn.R
-import com.example.ravn.RestauranteQuery
+import com.example.ravn.StarwarsQuery
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
